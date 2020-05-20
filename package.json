@@ -19,6 +19,8 @@
   "homepage": "https://github.com/Shash833/Project-2#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^4.0.4"
-  }
+    "express-handlebars": "^4.0.4",
+    "zomato-api": "^0.1.2"
+  },
+  "devDependencies": {}
 }

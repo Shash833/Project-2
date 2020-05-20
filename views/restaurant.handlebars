@@ -1,56 +1,9 @@
-<header class="hero is-warning is-bold">
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title">
-                Online Ordering System
-            </h1>
-            <h2 class="subtitle">
-                <!--Sub-title????-->
-            </h2>
-        </div>
-    </div>
-    <!--Navigation bar-->
-    <nav class="navbar-item">
-        <div class="field is-grouped">
-            <p class="control">
-                <!--Login button-->
-                <a class="button" id="loginButton" href="/login">
-                    <!--TODO: create routes-->
-                    <span class="icon">
-                        <i class="fas fa-black" aria-hidden="true"></i>
-                    </span>
-                    <span>Login</span>
-                </a>
-            </p>
-            <p class="control">
-                <!--Register button-->
-                <a class="button" id="registerNavButton" href="/register">
-                    <!--TODO: create routes-->
-                    <span class="icon">
-                        <i class="fas fa-download" aria-hidden="true"></i>
-                    </span>
-                    <span>Register</span>
-                </a>
-            </p>
-            <p class="control">
-                <!--Register button-->
-                <a class="button" id="registerNavButton" href="/">
-                    <!--TODO: create routes-->
-                    <span class="icon">
-                        <i class="fas fa-download" aria-hidden="true"></i>
-                    </span>
-                    <span>Home</span>
-            </p>
-        </div>
-    </nav>
-</header>
-
 <body>
     <header class="hero is-warning is-bold">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    Online Ordering System
+                    <i class="fas fa-utensils"></i> Online Ordering System
                 </h1>
                 <h2 class="subtitle">
                     <!--Sub-title????-->
@@ -62,19 +15,15 @@
             <div class="field is-grouped">
                 <p class="control">
                     <!--Login button-->
-                    <a class="button">
-                        <span class="icon">
-                            <i class="fas fa-black" aria-hidden="true"></i>
-                        </span>
+                    <a class="button" id="loginButton" href="/login">
+                        <!--TODO: create routes-->
                         <span>Login</span>
                     </a>
                 </p>
                 <p class="control">
                     <!--Register button-->
-                    <a class="button is-black">
-                        <span class="icon">
-                            <i class="fas fa-download" aria-hidden="true"></i>
-                        </span>
+                    <a class="button" id="registerNavButton" href="/register">
+                        <!--TODO: create routes-->
                         <span>Register</span>
                     </a>
                 </p>
@@ -82,9 +31,6 @@
                     <!--Home button-->
                     <a class="button" id="registerNavButton" href="/">
                         <!--TODO: create routes-->
-                        <span class="icon">
-                            <i class="fas fa-download" aria-hidden="true"></i>
-                        </span>
                         <span>Home</span>
                     </a>
                 </p>
@@ -92,33 +38,34 @@
         </nav>
     </header>
     <br>
-    <main>
+    <main class="container">
         <!--Dynamically enter restaurant details-->
         <div class="tile is-ancestor">
             <div class="tile is-4 is-vertical is-parent">
                 <div class="tile is-child box">
-                    <p class="title">Restaurant details:</p>
-                    <p>Name: <a>
-                            <!--Dynamically add name--></a>
-                    </p>
-                    <p>Address: <a>
-                            <!--Dynamically add address--></a></p>
-                    <p>Phone: <a>
-                            <!--Dynamically add phone number--></a></p>
-                    <p>Website: <a>
-                            <!--Dynamically add website link--></a></p>
-                    <p>Trading hours: <a>
-                            <!--Dynamically add trading hours--></a></p>
+                    <image src="{{restaurant.thumb}}">
+                        <p> <b>Name:</b> <br> <a>{{restaurant.name}}</a>
+                        </p>
+                        <br>
+                        <p> <b>Address:</b> <br> <a>{{restaurant.location.address}}</a></p>
+                        <br>
+                        <p> <b>Phone: </b><br> <a>{{restaurant.phone_numbers}}</a></p>
+                        <br>
+                        <p> <b>Trading hours:</b> <br> <a>{{restaurant.timings}}</a></p>
+                        <br>
+                        <p> <b>Additional information:</b> <br> {{restaurant.highlights}}
+                        </p>
                 </div>
             </div>
             <!--Menu items to be dynamically added from Zomato API or database? -->
             <div class="tile is-parent">
                 <div class="tile is-child box">
-                    <p class="title">Menu:</p>
+                    <p class="is-size-2">{{restaurant.name}} Menu:</p>
+                    <hr>
                     <ul>
                         <li>Menu item #1
-                            <button class="button is-warning" value="#" <!--item ID to be retreived from API and set as
-                                value, when button is clicked item ID will be added to order database--> >
+                            <button class="button is-warning" value="#" <!--item ID to be retreived from database and
+                                set as value, when button is clicked item ID will be added to order database--> >
                                 Add to order</button>
                         </li>
                         <br>
@@ -128,7 +75,9 @@
                     </ul>
                     <hr>
                     <!--Finalise order and send to database-->
-                    <button class="button is-warning">Place my order</button>
+                    <button class="button is-warning confirm_order" href="/order/placeholder<!--add order id-->">Place
+                        my
+                        order</button>
                 </div>
             </div>
         </div>

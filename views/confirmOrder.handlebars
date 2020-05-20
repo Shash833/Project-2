@@ -5,9 +5,6 @@
                 <h1 class="title">
                     <i class="fas fa-utensils"></i> Online Ordering System
                 </h1>
-                <h2 class="subtitle">
-                    <!--Sub-title????-->
-                </h2>
             </div>
         </div>
         <!--Navigation bar-->
@@ -16,47 +13,54 @@
                 <p class="control">
                     <!--Login button-->
                     <a class="button" id="loginButton" href="/login">
-                        <!--TODO: create routes-->
                         <span>Login</span>
                     </a>
                 </p>
                 <p class="control">
                     <!--Register button-->
                     <a class="button" id="registerNavButton" href="/register">
-                        <!--TODO: create routes-->
                         <span>Register</span>
                     </a>
                 </p>
                 <p class="control">
                     <!--Home button-->
                     <a class="button" id="registerNavButton" href="/">
-                        <!--TODO: create routes-->
                         <span>Home</span>
                     </a>
                 </p>
             </div>
         </nav>
     </header>
+    <main class="container">
+        <h2>Review your order:</h2>
 
-    <main class="columns">
-        <!--User login-->
-        <form class="section">
-            <h2>Enter login details:</h2>
-            <div class="container">
-                <!--Username-->
-                <div class="field">
-                    <label class="label">Username:</label>
-                    <input class="input" type="text" id="loginUsername">
-                </div>
-                <!--Password-->
-                <div class="field">
-                    <label class="label">Password:</label>
-                    <input class="input" type="password" id="loginPassword">
-                </div>
-            </div>
-            <!--Submit button-->
-            <submit class="button is-warning">Submit</submit>
-        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Items:</th>
+                    <th>Cost:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!--Loop through DB items to return table row information-->
+                    <td>Item #1</td>
+                    <td>Cost #1</td>
+                </tr>
+                <tr>
+                    <!--Loop through DB items to return table row information-->
+                    <td>Item #2</td>
+                    <td>Cost #2</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total Cost: </th>
+                    <td>
+                        <!--Retrieve total cost from DB-->
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
     </main>
-
 </body>

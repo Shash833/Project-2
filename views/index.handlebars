@@ -3,11 +3,8 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    Online Ordering System
+                    <i class="fas fa-utensils"></i> Online Ordering System
                 </h1>
-                <h2 class="subtitle">
-                    <!--Sub-title????-->
-                </h2>
             </div>
         </div>
         <!--Navigation bar-->
@@ -16,58 +13,39 @@
                 <p class="control">
                     <!--Login button-->
                     <a class="button" id="loginButton" href="/login">
-                        <!--TODO: create routes-->
-                        <span class="icon">
-                            <i class="fas fa-black" aria-hidden="true"></i>
-                        </span>
                         <span>Login</span>
                     </a>
                 </p>
                 <p class="control">
                     <!--Register button-->
                     <a class="button" id="registerNavButton" href="/register">
-                        <!--TODO: create routes-->
-                        <span class="icon">
-                            <i class="fas fa-download" aria-hidden="true"></i>
-                        </span>
                         <span>Register</span>
                     </a>
                 </p>
                 <p class="control">
                     <!--Home button-->
                     <a class="button" id="registerNavButton" href="/">
-                        <!--TODO: create routes-->
-                        <span class="icon">
-                            <i class="fas fa-download" aria-hidden="true"></i>
-                        </span>
                         <span>Home</span>
                     </a>
                 </p>
             </div>
         </nav>
     </header>
-    <main class="columns">
-        <form class="section">
+    <main class="container">
+        <div class="section">
             <h2>Begin the search for your next meal...</h2>
-            <div class="container">
-                <div class="field">
-                    <label class="label">Enter your city:</label>
-                    <div class="control">
-                        <input class="input" type="text">
-                    </div>
-
-                </div>
+            <div>
                 <br>
                 <div class="field">
-                    <label class="label">Which cuisine would you like to eat:</label>
-                    <input class="input" type="text">
+                    <!--Input feild-->
+                    <label class="label is-size-4">Enter your city: </label>
+                    <input class="input" id="inputCity" type="text">
                 </div>
-                <br>
-                <div class="field">
-                    <label class="label">Choose a restaurant:</label>
-                    <input class="input" type="text">
+                <!--Search button-->
+                <div class="buttons">
+                    <button class="button is-warning searchCity">Search</button>
                 </div>
             </div>
-        </form>
+        </div>
     </main>
 </body>

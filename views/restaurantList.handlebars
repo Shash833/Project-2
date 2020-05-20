@@ -1,0 +1,90 @@
+<body>
+    <header class="hero is-warning is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    <i class="fas fa-utensils"></i> Online Ordering System
+                </h1>
+                <h2 class="subtitle">
+                    <!--Sub-title????-->
+                </h2>
+            </div>
+        </div>
+        <!--Navigation bar-->
+        <nav class="navbar-item">
+            <div class="field is-grouped">
+                <p class="control">
+                    <!--Login button-->
+                    <a class="button" id="loginButton" href="/login">
+                        <!--TODO: create routes-->
+                        <span>Login</span>
+                    </a>
+                </p>
+                <p class="control">
+                    <!--Register button-->
+                    <a class="button" id="registerNavButton" href="/register">
+                        <!--TODO: create routes-->
+                        <span>Register</span>
+                    </a>
+                </p>
+                <p class="control">
+                    <!--Home button-->
+                    <a class="button" id="registerNavButton" href="/">
+                        <!--TODO: create routes-->
+                        <span>Home</span>
+                    </a>
+                </p>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <main class="container">
+        <div>
+            <!--If user has entered a valid city name-->
+            {{#if list}}
+            <div>
+                <h2>Restaurants available:</h2>
+            </div>
+            <hr>
+            <!--For each result retreived from Zomato API:-->
+            {{#each list}}
+            <!--display thumbnail image-->
+            <article class="media">
+                <figure class="media-left">
+                    <p class="image is-100x100">
+                        <!--If thumbnail available, display-->
+                        {{#if restaurant.thumb}}
+                        <img src="{{restaurant.thumb}}">
+                        <!--If thumbnail is not available, display placeholder-->
+                        {{else}} <img src="https://b.zmtcdn.com/images/placeholder_200.png?output-format=webp">
+                        {{/if}}
+                    </p>
+                </figure>
+                <div class="media-content">
+                    <div class="content">
+                        <div>
+                            <!--Display restaurant name and cuisine-->
+                            <div>
+                                <p class="heading is-size-3">{{restaurant.name}}</p>
+                                <p class="is-size-5"><b>Cuisine:</b> {{restaurant.cuisines}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--Button to retreive info from restaurant-->
+                <div class="media-right"><button class="restaurant is-size-4" data-id="{{restaurant.id}}">View
+                        restaurant</button></div>
+            </article>
+            <hr>
+            {{/each}}
+            <!--If user has not entered a valid city name, they will be notified-->
+            {{else}}<div>
+                <p class="is-size-2">You have not entered a valid city name, please return to home page and try again.
+                </p>
+            </div>
+            {{/if}}
+        </div>
+    </main>
+
+</body>
