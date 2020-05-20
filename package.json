@@ -20,6 +20,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
+    "mysql": "^2.18.1"
+  }
     "zomato-api": "^0.1.2"
   },
   "devDependencies": {}
