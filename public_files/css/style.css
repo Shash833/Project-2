@@ -1,0 +1,15 @@
+.title{
+    font-size: 75px;
+}
+h2{
+    font-size: 50px;
+}
+
+.section{
+    display: inline-block;
+    margin: auto;
+}
+
+nav{
+    float: right;
+}

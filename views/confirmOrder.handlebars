@@ -1,0 +1,66 @@
+<body>
+    <header class="hero is-warning is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    <i class="fas fa-utensils"></i> Online Ordering System
+                </h1>
+            </div>
+        </div>
+        <!--Navigation bar-->
+        <nav class="navbar-item">
+            <div class="field is-grouped">
+                <p class="control">
+                    <!--Login button-->
+                    <a class="button" id="loginButton" href="/login">
+                        <span>Login</span>
+                    </a>
+                </p>
+                <p class="control">
+                    <!--Register button-->
+                    <a class="button" id="registerNavButton" href="/register">
+                        <span>Register</span>
+                    </a>
+                </p>
+                <p class="control">
+                    <!--Home button-->
+                    <a class="button" id="registerNavButton" href="/">
+                        <span>Home</span>
+                    </a>
+                </p>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <h2>Review your order:</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Items:</th>
+                    <th>Cost:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!--Loop through DB items to return table row information-->
+                    <td>Item #1</td>
+                    <td>Cost #1</td>
+                </tr>
+                <tr>
+                    <!--Loop through DB items to return table row information-->
+                    <td>Item #2</td>
+                    <td>Cost #2</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total Cost: </th>
+                    <td>
+                        <!--Retrieve total cost from DB-->
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </main>
+</body>
