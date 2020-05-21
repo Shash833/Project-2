@@ -39,10 +39,14 @@ router.get("/:restaurantID", async function (req, res) {
   try {
     const resID = req.params.restaurantID;
     const listR = await zomato.restaurantInformation(resID);
-    const restaurantInfo = {
-      restaurant: listR,
-    };
-    res.render("restaurant", restaurantInfo);
+
+    order.selectAll(function (data) {
+      const restaurantInfo = {
+        restaurant: listR,
+        item: data,
+      };
+      res.render("restaurant", restaurantInfo);
+    });
   } catch (err) {
     console.log(err);
   }
@@ -53,22 +57,34 @@ router.get("/order/:id", async function (req, res) {
   res.render("confirmOrder");
 });
 
-router.post("/api/order", function (req, res) {
-  order.insertOne(
-    ["username", "password", "firstname", "lastname", "usertype", "customerId"],
-    [
-      req.body.username,
-      req.body.password,
-      req.body.firstname,
-      req.body.lastname,
-      "registered",
-      4,
-    ],
-    function (result) {
-      console.log("Data is inserted....");
-      res.json({ id: result.insertId });
-    }
-  );
+router.post("/api/order", async function (req, res) {
+  try {
+    order.insertOne(
+      [
+        "username",
+        "password",
+        "firstname",
+        "lastname",
+        "usertype",
+        "customerId",
+      ],
+      [
+        req.body.username,
+        req.body.password,
+        req.body.firstname,
+        req.body.lastname,
+        "registered",
+        4,
+      ],
+
+      await function (result) {
+        console.log("Data is inserted....");
+        res.json({ id: result.insertId });
+      }
+    );
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 //Export routes

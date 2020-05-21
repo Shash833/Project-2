@@ -1,15 +1,23 @@
-.title{
-    font-size: 75px;
+.title {
+  font-size: 75px;
 }
-h2{
-    font-size: 50px;
-}
-
-.section{
-    display: inline-block;
-    margin: auto;
+h2 {
+  font-size: 50px;
 }
 
-nav{
-    float: right;
+.section {
+  display: inline-block;
+  margin: auto;
+}
+
+nav {
+  float: right;
+}
+
+ol {
+  background-color: rgba(255, 238, 0, 0.842);
+}
+
+ol li:hover {
+  background-color: rgb(212, 193, 16);
 }
