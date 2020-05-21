@@ -58,12 +58,36 @@
                 </div>
             </div>
             <!--Menu items to be dynamically added from Zomato API or database? -->
+
             <div class="tile is-parent">
                 <div class="tile is-child box">
                     <p class="is-size-2">{{restaurant.name}} Menu:</p>
                     <hr>
-                    <ul>
-                        <li>Menu item #1
+                    <ol>
+                        {{#each item}}
+                        <div class="row">
+                            <div class="col">
+                                <li>
+                                    <span>
+                                        {{name}} ,Quantity: {{quantity}} ,Price: ${{price}}
+                                        <div class="field">
+                                            <input id="switchRtlExample" type="checkbox" name="switchRtlExample"
+                                                class="switch is-rtl" checked="checked" data-id=`{{itemId}}`>
+                                            <label for="switchRtlExample">Add to order</label>
+                                        </div>
+                                    </span>
+                            </div>
+                            {{!-- <div class="col">
+                                <button class="button is-warning" data-id=`{{itemId}} id="item" `>
+                                    Add to order
+                                </button>
+                            </div> --}}
+                            </li>
+
+                        </div>
+                        {{/each}}
+
+                        {{!-- <li>{{items.name}}
                             <button class="button is-warning" value="#" <!--item ID to be retreived from database and
                                 set as value, when button is clicked item ID will be added to order database--> >
                                 Add to order</button>
@@ -71,13 +95,13 @@
                         <br>
                         <li>Menu item #1
                             <button class="button is-warning">Add to order</button>
-                        </li>
-                    </ul>
+                        </li> --}}
+                    </ol>
                     <hr>
                     <!--Finalise order and send to database-->
-                    <button class="button is-warning confirm_order" href="/order/placeholder<!--add order id-->">Place
-                        my
-                        order</button>
+                    <button class="button is-warning confirm_order" id="orderId">
+                        Place my order
+                    </button>
                 </div>
             </div>
         </div>

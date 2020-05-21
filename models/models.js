@@ -2,11 +2,11 @@
 var orm = require("../config/orm.js");
 
 var order = {
-  //   selectAll: function (cb) {
-  //     orm.selectAll("burgers", function (res) {
-  //       cb(res);
-  //     });
-  //   },
+  selectAll: function (cb) {
+    orm.selectAll("item", function (res) {
+      cb(res);
+    });
+  },
   insertOne: function (cols, vals, cb) {
     orm.insertOne("user", cols, vals, function (res) {
       cb(res);
