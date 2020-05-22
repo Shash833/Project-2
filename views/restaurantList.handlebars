@@ -3,7 +3,7 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    <i class="fas fa-utensils"></i> Online Ordering System
+                    <i class="fas fa-utensils"></i> Online Ordering System<i class="fas fa-glass-cheers"></i>
                 </h1>
             </div>
         </div>
@@ -54,17 +54,21 @@
                     </div>
                 </div>
                 <!--Button to retreive info from restaurant-->
-                <div class="media-right"><button class="restaurant is-size-4" data-id="{{restaurant.id}}">View
-                        restaurant</button></div>
-            </article>
-            <hr>
-            {{/each}}
-            <!--If user has not entered a valid city name, they will be notified-->
-            {{else}}<div>
-                <p class="is-size-2">You have not entered a valid city name, please return to home page and try again.
-                </p>
-            </div>
-            {{/if}}
+                {{!-- <div class="media-right "><button class="restaurant is-size-4"
+                        data-id="{{restaurant.id}}">View
+                        restaurant</button></div> --}}
+                <button class="button restaurant is-size-4 is-warning is-hovered" data-id="{{restaurant.id}}">View
+                    restaurant</button>
+        </div>
+        </article>
+        <hr>
+        {{/each}}
+        <!--If user has not entered a valid city name, they will be notified-->
+        {{else}}<div>
+            <p class="is-size-2">You have not entered a valid city name, please return to home page and try again.
+            </p>
+        </div>
+        {{/if}}
         </div>
     </main>
 

@@ -39,36 +39,57 @@
                 </div>
             </div>
             <!--Menu items to be dynamically added from Zomato API or database? -->
-
-            <div class="tile is-parent">
-                <div class="tile is-child box">
-                    <p class="is-size-2">{{restaurant.name}} Menu:</p>
-                    <hr>
-                    <ol>
-                        {{#each item}}
-                        <div class="row">
-                            <div class="col">
-                                <li>
-                                    <span>
-                                        {{name}} ,Quantity: {{quantity}} ,Price: ${{price}}
-                                        <div class="field">
-                                            <input id="switchRtlExample" type="checkbox" name="switchRtlExample"
-                                                class="switch is-rtl" checked="checked" data-id=`{{itemId}}`>
-                                            <label for="switchRtlExample">Add to order</label>
-                                        </div>
-                                    </span>
-                            </div>
-                            {{!-- <div class="col">
+            <form name="items" method="post">
+                <div class="tile is-parent">
+                    <div class="tile is-child box">
+                        <p id="restName" class="is-size-2">{{restaurant.name}} Menu:</p>
+                        <hr>
+                        <ol>
+                            {{#each item}}
+                            <div class="row">
+                                {{!-- <div class="col-lg-6">
+                                    <li>
+                                        <span>
+                                            <label class="itemId">{{itemId}}</label>.
+                                            <label class="itemName">{{name}}</label>
+                                            ,Quantity: <label class="quantitySize">{{quantity}}</label>
+                                            ,Price:$<label class="price">{{price}}</label>
+                                        </span>
+                                </div>
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input is-warning" type="text" placeholder="Warning input">
+                                    </div>
+                                </div>
+                                <input class="input is-rounded" type="text" placeholder="Enter quantity">
+                                <div class="col-lg-12"> <input type="text" data-id="quantity" class="quantity"
+                                        placeholder="enter quantity"></div> --}}
+                                <div class="columns">
+                                    <div class="column">
+                                        <b><label class="itemId" id="itemId">{{itemId}}</label>.</b>
+                                        <b><label class="itemName">{{name}}</label>,</b>
+                                    </div>
+                                    <div class="column">
+                                        <b>Quantity: <label class="quantitySize">{{quantity}}</label>,</b></div>
+                                    <div class="column">
+                                        <b> Price:$<label class="price">{{price}}</label></b>
+                                    </div>
+                                    <div class="column">
+                                        <b> <input class="quantity input is-rounded" type="text" data-id="quantity"
+                                                placeholder="Enter quantity"></b>
+                                    </div>
+                                </div>
+                                {{!-- <div class="col">
                                 <button class="button is-warning" data-id=`{{itemId}} id="item" `>
                                     Add to order
                                 </button>
                             </div> --}}
-                            </li>
+                                </li>
 
-                        </div>
-                        {{/each}}
+                            </div>
+                            {{/each}}
 
-                        {{!-- <li>{{items.name}}
+                            {{!-- <li>{{items.name}}
                             <button class="button is-warning" value="#" <!--item ID to be retreived from database and
                                 set as value, when button is clicked item ID will be added to order database--> >
                                 Add to order</button>
@@ -77,14 +98,22 @@
                         <li>Menu item #1
                             <button class="button is-warning">Add to order</button>
                         </li> --}}
-                    </ol>
-                    <hr>
-                    <!--Finalise order and send to database-->
-                    <button class="button is-warning confirm_order" id="orderId">
-                        Place my order
-                    </button>
+                        </ol>
+                        <hr>
+                        <!--Finalise order and send to database-->
+                        <div class="columns">
+                            <div class="column"> <button class="button is-warning is-loading">Loading</button></div>
+
+                            <div class="column">
+
+                                <button class="button is-warning confirm_order" id="orderId">
+                                    <b>Place my order</b>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </main>
 </body>

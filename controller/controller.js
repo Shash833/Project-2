@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const zomato = require("../models/zomato");
-const bcrypt = require("bcrypt")
-const fs = require("fs")
+const bcrypt = require("bcrypt");
+const fs = require("fs");
 
+const store = require("data-store")({ path: process.cwd() + "/store.json" });
 var order = require("../models/models.js");
+var moment = require("moment");
 
 //GET Route to display main page
 router.get("/", function (req, res) {
@@ -19,6 +21,25 @@ router.get("/search", function (req, res) {
 //GET Route to display registration page
 router.get("/register", function (req, res) {
   res.render("register");
+});
+
+router.get("/vieworders/:customerId", function (req, res) {
+  // try {
+  //   const resID = req.params.restaurantID;
+  //   const listR = await zomato.restaurantInformation(resID);
+
+  //   order.selectAll(function (data) {
+  //     const restaurantInfo = {
+  //       restaurant: listR,
+  //       item: data,
+  //     };
+  //     res.render("viewOrders");
+  //     // res.render("restaurant", restaurantInfo);
+  //   });
+  // } catch (err) {
+  //   console.log(err);
+  // }
+  res.render("viewOrders");
 });
 
 //GET Route to display restaurant list for location
@@ -63,7 +84,11 @@ router.get("/order/:id", async function (req, res) {
 //POST route to submit registration details
 router.post("/api/register", async function (req, res) {
   try {
-    const password = await bcrypt.hash(req.body.password, bcrypt.genSaltSync(1), null);
+    const password = await bcrypt.hash(
+      req.body.password,
+      bcrypt.genSaltSync(1),
+      null
+    );
     order.insertOne(
       [
         "username",
@@ -92,43 +117,43 @@ router.post("/api/register", async function (req, res) {
   }
 });
 
-//POST route to log in 
+//POST route to log in
 router.post("/api/login", async function (req, res) {
-  const username = req.body.username
-  const password = req.body.password
+  const username = req.body.username;
+  const password = req.body.password;
   function comparePassword(users) {
     //compare retreived usernames from DB to check if there is a password match
     for (let i = 0; i < users.length; i++) {
       //Check if hashed version of login password matches hashed version of password in databse
       if (bcrypt.compareSync(password, users[i].password)) {
         //Store user details to fs to maintain user session
-        const sessionData = JSON.stringify(users[i])
-        fs.writeFile('serverFiles/session.json', sessionData, function (err) {
+        const sessionData = JSON.stringify(users[i]);
+        fs.writeFile("serverFiles/session.json", sessionData, function (err) {
           if (err) throw err;
-          console.log('Session updated');
+          console.log("Session updated");
         });
         //redirect to search page if password matches
-        res.redirect("/search")
-        return
+        res.redirect("/search");
+        return;
+      } else {
+        console.log("no match");
       }
-      else { console.log("no match") }
     }
   }
   order.findOne(username, function (data) {
-    const users = data
-    comparePassword(users)
-  })
-})
+    const users = data;
+    comparePassword(users);
+  });
+});
 
 router.delete("/logout", function (req, res) {
-  const empty = []
-  fs.writeFile('serverFiles/session.json', empty, function (err) {
+  const empty = [];
+  fs.writeFile("serverFiles/session.json", empty, function (err) {
     if (err) throw err;
-    console.log('User logout');
+    console.log("User logout");
   });
-  res.redirect("/")
-})
-
+  res.redirect("/");
+});
 
 //Export routesc
 module.exports = router;
