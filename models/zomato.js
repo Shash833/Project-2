@@ -44,7 +44,6 @@ const zomatoAPI = {
         try {
             const { cityID, cityType } = await this.getDataForCity(`${city}`)
             const list = await this.getCityList(`${cityID}`, `${cityType}`)
-            console.log(list)
             return list
         }
         catch (err) {
@@ -63,7 +62,6 @@ const zomatoAPI = {
                 },
             })
             const restaurantInfo = data
-            console.log(data)
             return restaurantInfo
 
         }

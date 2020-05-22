@@ -25,10 +25,18 @@ function objToSql(ob) {
   return arr.toString();
 }
 
-// Object for all our SQL statement functions.
 var orm = {
   selectAll: function (tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
+    connection.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  findOne: function (username, cb) {
+    var queryString = `SELECT * FROM user WHERE username = "${username}";`;
     connection.query(queryString, function (err, result) {
       if (err) {
         throw err;
@@ -54,22 +62,6 @@ var orm = {
       cb(result);
     });
   },
-  //   updateOne: function (table, objColVals, condition, cb) {
-  //     var queryString = "UPDATE " + table;
-
-  //     queryString += " SET ";
-  //     queryString += objToSql(objColVals);
-  //     queryString += " WHERE ";
-  //     queryString += condition;
-
-  //     connection.query(queryString, function (err, result) {
-  //       if (err) {
-  //         throw err;
-  //       }
-  //       cb(result);
-  //     });
-  //   },
 };
 
-// Exporting the orm object for the model (burger.js).
 module.exports = orm;
