@@ -7,6 +7,11 @@ var order = {
       cb(res);
     });
   },
+  findOne: function (username, cb) {
+    orm.findOne(username, function (res) {
+      cb(res);
+    })
+  },
   insertOne: function (cols, vals, cb) {
     orm.insertOne("user", cols, vals, function (res) {
       cb(res);
