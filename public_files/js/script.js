@@ -19,20 +19,11 @@ $(function () {
 
   $("#orderId").on("click", function (event) {
     event.preventDefault();
-
-    // const order = getOrder();
     var checked = 0;
     const sendOrder = getOrder(checked);
-
     location.assign(`/order/confirmorder/${sendOrder}`);
-
-    // $.ajax("/order/confirmorder/sendOrder", {
-    //   type: "POST",
-    //   data: sendOrder,
-    // }).then(function () {
-    //   location.reload("/");
-    // });
   });
+
 
   function getOrder(checked) {
     var nameClass = document.getElementsByClassName("itemName");
@@ -43,7 +34,6 @@ $(function () {
 
     if (checked === 1) {
       var pickupDatetime = document.getElementById("datetime").value.trim();
-      alert("date time is:" + pickupDatetime);
     }
 
     var itemIds = [];
@@ -92,7 +82,6 @@ $(function () {
         subTotal.push(price * quantity);
       }
     }
-    alert("Subtotal is:" + subTotal);
     var order = {
       id: itemIds,
       quantitySize: itemquantitySize,
@@ -103,7 +92,6 @@ $(function () {
       totalPrice: totalPrices,
       pickupDatetime: pickupDatetime,
     };
-    alert("Inside function buddy...");
     const sendOrder = JSON.stringify(order);
     return sendOrder;
   }
@@ -115,9 +103,9 @@ $(function () {
     location.assign(`/order/finalOrder/${sendOrder}`);
   });
 
+
   $(".viewHistorylink").on("click", function (event) {
     event.preventDefault();
-    alert("clicked yes...");
     const customerId = "3";
     location.assign(`/vieworders/${customerId}`);
   });
@@ -130,13 +118,6 @@ $(function () {
     const sendOrder = getOrder(checked);
 
     location.assign(`/order/confirmorder/${sendOrder}`);
-
-    // $.ajax("/order/confirmorder/sendOrder", {
-    //   type: "POST",
-    //   data: sendOrder,
-    // }).then(function () {
-    //   location.reload("/");
-    // });
   });
 
   function getOrder(checked) {
@@ -148,7 +129,6 @@ $(function () {
 
     if (checked === 1) {
       var pickupDatetime = document.getElementById("datetime").value.trim();
-      alert("date time is:" + pickupDatetime);
     }
 
     var itemIds = [];
@@ -197,7 +177,6 @@ $(function () {
         subTotal.push(price * quantity);
       }
     }
-    alert("Subtotal is:" + subTotal);
     var order = {
       id: itemIds,
       quantitySize: itemquantitySize,
@@ -208,7 +187,6 @@ $(function () {
       totalPrice: totalPrices,
       pickupDatetime: pickupDatetime,
     };
-    alert("Inside function buddy...");
     const sendOrder = JSON.stringify(order);
     return sendOrder;
   }
@@ -222,7 +200,6 @@ $(function () {
 
   $(".viewHistorylink").on("click", function (event) {
     event.preventDefault();
-    alert("clicked yes...");
     const customerId = "3";
     location.assign(`/vieworders/${customerId}`);
   });
