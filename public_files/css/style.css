@@ -21,3 +21,34 @@ ol {
 ol li:hover {
   background-color: rgb(212, 193, 16);
 }
+
+.container {
+  margin-left: 100px;
+}
+
+.subtotal {
+  color: blue;
+}
+.total {
+  color: green;
+}
+
+.itemId {
+  color: white;
+}
+
+#restName {
+  margin-left: 220px;
+}
+
+#orderId {
+  margin-left: -80px;
+}
+
+#itemId {
+  color: black;
+}
+
+.restaurant {
+  margin-right: 50px;
+}

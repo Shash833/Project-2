@@ -7,8 +7,31 @@ var order = {
       cb(res);
     });
   },
+  findOne: function (username, cb) {
+    orm.findOne(username, function (res) {
+      cb(res);
+    });
+  },
   insertOne: function (cols, vals, cb) {
     orm.insertOne("user", cols, vals, function (res) {
+      cb(res);
+    });
+  },
+  // insertorderItem: function (cols, vals, cb) {
+  //   orm.insertOne("orderitem", cols, vals, function (res) {
+  //     cb(res);
+  //   });
+  // },
+  insertOrder: function (cols, vals, cb) {
+    orm.insertOne("orders", cols, vals, function (res) {
+      cb(res);
+    });
+  },
+  insertOrderItem: function (cols, vals) {
+    orm.insertOrderItem("orderitem", cols, vals);
+  },
+  selectOrders: function (cb) {
+    orm.selectAll("orders", function (res) {
       cb(res);
     });
   },

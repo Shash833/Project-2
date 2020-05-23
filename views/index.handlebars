@@ -3,7 +3,7 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    <i class="fas fa-utensils"></i> Online Ordering System
+                    <i class="fas fa-utensils"></i> Online Ordering System<i class="fas fa-glass-cheers"></i>
                 </h1>
             </div>
         </div>
@@ -11,28 +11,21 @@
         <nav class="navbar-item">
             <div class="field is-grouped">
                 <p class="control">
-                    <!--Login button-->
-                    <a class="button" id="loginButton" href="/login">
-                        <span>Login</span>
-                    </a>
-                </p>
-                <p class="control">
-                    <!--Register button-->
-                    <a class="button" id="registerNavButton" href="/register">
-                        <span>Register</span>
-                    </a>
-                </p>
-                <p class="control">
-                    <!--Home button-->
-                    <a class="button" id="registerNavButton" href="/">
-                        <span>Home</span>
+                    <!--Logout button-->
+                    <a class="button" id="logoutButton" href="/">
+                        <span>Logout</span>
                     </a>
                 </p>
             </div>
         </nav>
     </header>
     <main class="container">
+
+        {{!-- {{#if store.data.orderId}}
+        <div>Your order has been placed successfully...</div>
+        {{/if}} --}}
         <div class="section">
+            <a class="viewHistorylink">View Order History</a>
             <h2>Begin the search for your next meal...</h2>
             <div>
                 <br>
