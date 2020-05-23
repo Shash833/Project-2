@@ -21,7 +21,7 @@ The application has been deployed on Heroku (using JawsDB to support the MySQL d
 * View past orders
 
 ## Preview: 
-![login](/assests/loginPage.PNG)
+![login](/assets/loginPage.PNG)
 
 ![search](/assets/searchPage.PNG)
 
