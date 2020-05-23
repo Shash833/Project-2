@@ -17,6 +17,7 @@ var order = {
       cb(res);
     });
   },
+
   insertOrder: function (cols, vals, cb) {
     orm.insertOne("orders", cols, vals, function (res) {
       cb(res);
