@@ -1,8 +1,9 @@
 $(function () {
   $("#submitForm").on("click", function (event) {
     event.preventDefault();
-  });
 
+  });
+  //when user submits registration details.
   $("#registerSubmit").on("click", function (event) {
     event.preventDefault();
     var newUser = {
@@ -12,14 +13,13 @@ $(function () {
       lastname: $("#createLastName").val().trim(),
     };
     // POST request.
-    $.ajax("/api/order", {
+    $.ajax("/api/register", {
       type: "POST",
       data: newUser,
     }).then(function () {
       location.assign("/");
     });
   });
-
   //when user logs in
   $("#submitLogin").on("click", function (event) {
     event.preventDefault();
@@ -31,9 +31,10 @@ $(function () {
     $.ajax("/api/login", {
       type: "POST",
       data: User,
-    }).then(function () {
-      location.assign("/search");
-    });
+    })
+      .then(function () {
+        location.assign("/search");
+      });
   });
 
   //when user logs out
@@ -41,8 +42,10 @@ $(function () {
     // DELETE request.
     $.ajax("/logout", {
       type: "DELETE",
-    }).then(function () {
-      location.assign("/");
-    });
+    })
+      .then(function () {
+        location.assign("/");
+      });
   });
+
 });

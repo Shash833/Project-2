@@ -17,11 +17,7 @@ var order = {
       cb(res);
     });
   },
-  // insertorderItem: function (cols, vals, cb) {
-  //   orm.insertOne("orderitem", cols, vals, function (res) {
-  //     cb(res);
-  //   });
-  // },
+
   insertOrder: function (cols, vals, cb) {
     orm.insertOne("orders", cols, vals, function (res) {
       cb(res);

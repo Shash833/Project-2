@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const zomato = require("../models/zomato");
-const fs = require("fs");
+
 const bcrypt = require("bcrypt");
+const fs = require("fs");
+
 const store = require("data-store")({ path: process.cwd() + "/store.json" });
+var order = require("../models/models.js");
 
 var moment = require("moment");
 
@@ -14,7 +17,7 @@ router.get("/", function (req, res) {
   res.render("login");
 });
 
-//GET Route to display search page
+
 router.get("/search", function (req, res) {
   res.render("index");
 });
@@ -62,13 +65,14 @@ router.get("/restaurants/:location", async function (req, res) {
 router.get("/:restaurantID", async function (req, res) {
   try {
     const resID = req.params.restaurantID;
+    //retrieve restaurant information
     const listR = await zomato.restaurantInformation(resID);
-
     order.selectAll(function (data) {
       const restaurantInfo = {
         restaurant: listR,
         item: data,
       };
+      //render restaurant information to html
       res.render("restaurant", restaurantInfo);
     });
   } catch (err) {
@@ -192,8 +196,14 @@ router.get("/order/finalOrder/:sendOrder", async function (req, res) {
   }
 });
 
-router.post("/api/order", async function (req, res) {
+//POST route to submit registration details
+router.post("/api/register", async function (req, res) {
   try {
+    const password = await bcrypt.hash(
+      req.body.password,
+      bcrypt.genSaltSync(1),
+      null
+    );
     order.insertOne(
       [
         "username",
@@ -205,7 +215,7 @@ router.post("/api/order", async function (req, res) {
       ],
       [
         req.body.username,
-        req.body.password,
+        password,
         req.body.firstname,
         req.body.lastname,
         "registered",
@@ -296,5 +306,4 @@ router.delete("/logout", function (req, res) {
   res.redirect("/");
 });
 
-//Export routes
 module.exports = router;
