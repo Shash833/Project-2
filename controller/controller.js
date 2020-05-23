@@ -1,17 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const zomato = require("../models/zomato");
-
 const bcrypt = require("bcrypt");
 const fs = require("fs");
-
 const store = require("data-store")({ path: process.cwd() + "/store.json" });
-var order = require("../models/models.js");
+const order = require("../models/models.js");
+const moment = require("moment");
 
-var moment = require("moment");
 
-var order = require("../models/models.js");
-// var Items = require("../models/items.js");
 //GET Route to display main page
 router.get("/", function (req, res) {
   res.render("login");
@@ -28,21 +24,6 @@ router.get("/register", function (req, res) {
 });
 
 router.get("/vieworders/:customerId", function (req, res) {
-  // try {
-  //   const resID = req.params.restaurantID;
-  //   const listR = await zomato.restaurantInformation(resID);
-
-  //   order.selectAll(function (data) {
-  //     const restaurantInfo = {
-  //       restaurant: listR,
-  //       item: data,
-  //     };
-  //     res.render("viewOrders");
-  //     // res.render("restaurant", restaurantInfo);
-  //   });
-  // } catch (err) {
-  //   console.log(err);
-  // }
   res.render("viewOrders");
 });
 
@@ -80,45 +61,27 @@ router.get("/:restaurantID", async function (req, res) {
   }
 });
 
-//GET Route to display order details page
-// router.get("/order/:id", async function (req, res) {
-//   res.render("confirmOrder");
-// });
-
 router.get("/order/confirmorder/:sendOrder", function (req, res) {
   // try {
   console.log("first req.body.id using post is:", req.params.sendOrder);
   console.log("Id is:", req.params.sendOrder.id);
-  // fs.writeFile("itemsOrdered.json", req.params.sendOrder, function (err) {
-  //   if (err) throw err;
-  //   console.log("items ordered...");
-  // });
-
-  // await writeJsonFile("foo.json", req.params.sendOrder);
 
   const data = req.params.sendOrder;
   const parseData = JSON.parse(data);
-  // console.log("parse data is:", parseData);
   const fullOrder = {
     order: parseData,
   };
-  // console.log("full order is:", fullOrder);
 
   res.render("confirmOrder", fullOrder);
-  // } catch (err) {
-  //   console.log(err);
-  // }
 });
 
 router.get("/order/finalOrder/:sendOrder", async function (req, res) {
   // try {
   try {
     console.log("first req.body.id using post is:", req.params.sendOrder);
-    // console.log("Id is:", req.params.sendOrder.id);
 
     const data = req.params.sendOrder;
     const parseData = JSON.parse(data);
-    // console.log("parse data is:", parseData);
     const fullOrder = {
       order: parseData,
     };
@@ -160,37 +123,11 @@ router.get("/order/finalOrder/:sendOrder", async function (req, res) {
           order.insertOrderItem(
             ["quantity", "price", "itemId", "orderId"],
             [quantityDb, priceDb, itemIdDb, orderIdDb]
-
-            // function (result) {
-            //   console.log("Data is inserted....");
-            //   console.log("Created order item id is:" + result.insertId);
-            //   // res.json({ id: result.insertId });
-            //   res.render("index");
-            //   // location.assign(`/`);
-            // }
           );
         }
-
-        res.render("index");
-        // location.assign(`/`);
+        res.redirect("/search");
       }
     );
-
-    //    console.log("Moment.format is:", moment().format());
-    // order.insertorderItem(
-    //   ["quantity", "price", "itemId", "orderId"],
-    //   [2, 6, 2, 4],
-
-    //   await function (result) {
-    //     console.log("Data is inserted....");
-    //     console.log("Created id is:" + result.insertId);
-    //     // res.json({ id: result.insertId });
-    //     res.render("index");
-    //     // location.assign(`/`);
-    //   }
-    // );
-    //alert("Order placed successfully.....!!!");
-    // res.render("index");
   } catch (err) {
     console.log(err);
   }
@@ -222,8 +159,7 @@ router.post("/api/register", async function (req, res) {
         4,
       ],
 
-      await function (result) {
-        console.log("Data is inserted....");
+      function (result) {
         res.json({ id: result.insertId });
       }
     );
@@ -297,6 +233,7 @@ router.post("/api/login", async function (req, res) {
   });
 });
 
+//To delete user session
 router.delete("/logout", function (req, res) {
   const empty = [];
   fs.writeFile("serverFiles/session.json", empty, function (err) {

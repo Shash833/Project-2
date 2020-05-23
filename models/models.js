@@ -31,12 +31,7 @@ var order = {
       cb(res);
     });
   },
-  //   updateOne: function (objColVals, condition, cb) {
-  //     orm.updateOne("burgers", objColVals, condition, function (res) {
-  //       cb(res);
-  //     });
-  //   },
 };
 
-// Export the database functions for the controller (controller.js).
+// Export the database functions 
 module.exports = order;

@@ -31,8 +31,4 @@
     "require": "^2.4.20",
     "write-json-file": "^4.3.0"
   }
-
-    "mysql": "^2.18.1"
-  },
-  "devDependencies": {}
 }

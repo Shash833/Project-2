@@ -20,6 +20,8 @@ $(function () {
       location.assign("/");
     });
   });
+
+
   //when user logs in
   $("#submitLogin").on("click", function (event) {
     event.preventDefault();
